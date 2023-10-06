@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -7,6 +7,8 @@ import { searchFun } from "../../functions/searchFunc"
 import "./Header.css"
 
 function Header() {
+  const [isLogin, setIsLogin] = useState(false)
+
   return (
     <header className="header">
       <nav className="nav-container">
@@ -29,10 +31,18 @@ function Header() {
           onClick={searchFun}
         />
       </div>
-      <span className="loginRegister">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </span>
+      {isLogin && (
+        <span className="loginRegister">
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </span>
+      )}
+      {!isLogin && (
+        <span className="loginRegister">
+          <Link to="/createPost">Create post</Link>
+          <Link to="/logout">LogOut</Link>
+        </span>
+      )}
     </header>
   )
 }
