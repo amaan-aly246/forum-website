@@ -34,3 +34,7 @@ header {
 .header a:hover {
   text-decoration: underline wavy var(--tertiaryColor);
 }
+
+.loginRegister {
+  align-self: center;
+}

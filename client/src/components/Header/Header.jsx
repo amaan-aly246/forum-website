@@ -3,19 +3,9 @@ import { Link } from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
-
+import { searchFun } from "../../functions/searchFunc"
 import "./Header.css"
 
-const searchFun = () => {
-  const searchInput = document.querySelector(".search-input")
-  const currentVisibility = searchInput.style.visibility
-  if (currentVisibility === "hidden") {
-    searchInput.style.visibility = "visible"
-    searchInput.focus()
-  } else {
-    searchInput.style.visibility = "hidden"
-  }
-}
 function Header() {
   return (
     <header className="header">
@@ -25,7 +15,7 @@ function Header() {
             <Link to="/">all post</Link>
           </li>
           <li>
-            <Link to="/about">my post</Link>
+            <Link to="/myPost">my post</Link>
           </li>
           <li></li>
         </ul>
@@ -39,7 +29,10 @@ function Header() {
           onClick={searchFun}
         />
       </div>
-      <Link to="/login-signup">Login/Sign-up</Link>
+      <span className="loginRegister">
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+      </span>
     </header>
   )
 }
