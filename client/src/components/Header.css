@@ -1,0 +1,36 @@
+ul {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 1.2rem;
+  color: black;
+  /* background-color: red; */
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--secondaryColor);
+}
+
+.search-container {
+  align-self: center;
+  margin-right: -25px;
+  cursor: pointer;
+}
+
+.search-input {
+  margin-right: 10px;
+  visibility: hidden;
+}
+
+.header a {
+  text-decoration: none;
+  color: gray;
+  align-self: center;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.header a:hover {
+  text-decoration: underline wavy var(--tertiaryColor);
+}

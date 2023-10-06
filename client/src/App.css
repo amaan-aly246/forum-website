@@ -1,0 +1,19 @@
+:root {
+  --primaryColor: #e8e8e4;
+  --secondaryColor: #d8e2dc;
+    --tertiaryColor: #89c2d9;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--primaryColor);
+  text-transform: capitalize;
+}
+
+li{
+    list-style: none;
+    text-decoration: none;
+}
