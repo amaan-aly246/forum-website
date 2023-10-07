@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { searchFun } from "../../functions/searchFunc"
 import "./Header.css"
+import { logoutFunc } from "../../functions/logoutFunc"
 
 function Header() {
   const [isLogin, setIsLogin] = useState(false)
@@ -40,7 +41,7 @@ function Header() {
       {!isLogin && (
         <span className="loginRegister">
           <Link to="/createPost">Create post</Link>
-          <Link to="/logout">LogOut</Link>
+          <Link onClick={logoutFunc}>logOut</Link>
         </span>
       )}
     </header>
