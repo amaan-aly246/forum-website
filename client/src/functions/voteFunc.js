@@ -1,37 +1,27 @@
 
-export function voteFunc(event, voteCount, setVoteCount) {
 
-  const up = document.querySelector("#up")
-  const down = document.querySelector("#down")
+export function voteFunc(event, voteCount, setVoteCount, postID) {
+
+  const postElement = event.target.closest(`#post-${postID}`);
+  const up = postElement.querySelector("#up");
+  const down = postElement.querySelector("#down");
+
   if (event.target.id === "up") {
-    if (!down.className.includes("filter-gray")) {
-      down.classList.add("filter-gray")
-      // setVoteCount(voteCount - 2)
-    }
-    if (up.className.includes("filter-gray")) {
-      setVoteCount(voteCount + 1)
-      up.classList.toggle("filter-gray")
-
+    if (up.classList.contains("filter-gray")) {
+      setVoteCount(voteCount + 1);
+      up.classList.remove("filter-gray");
     } else {
-      setVoteCount(voteCount - 1)
-      up.classList.toggle("filter-gray")
-
+      setVoteCount(voteCount - 1);
+      up.classList.add("filter-gray");
     }
-  } else {
-    if (!up.className.includes("filter-gray")) {
-      // setVoteCount(voteCount - 2)
-      up.classList.add("filter-gray")
-    }
-    if (down.className.includes("filter-gray")) {
-      down.classList.toggle("filter-gray")
-
-      setVoteCount(voteCount - 1)
+  } else if (event.target.id === "down") {
+    if (down.classList.contains("filter-gray")) {
+      setVoteCount(voteCount - 1);
+      down.classList.remove("filter-gray");
     } else {
-      down.classList.toggle("filter-gray")
-      setVoteCount(voteCount + 1)
+      setVoteCount(voteCount + 1);
+      down.classList.add("filter-gray");
     }
   }
-
 }
 
-// export default voteFunc;

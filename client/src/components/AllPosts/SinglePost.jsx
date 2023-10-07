@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import "./AllPosts.css"
 import { voteFunc } from "../../functions/voteFunc"
-function SinglePost({name, time}) {
+function SinglePost({name, time , postID}) {
   const [voteCount, setVoteCount] = useState(0)
 
   return (
-    <section className="post-container">
+    <section className="post-container" id={`post-${postID}`} >
       <header className="post-header">
         <span className="author">
           {name} {time}
@@ -16,14 +16,14 @@ function SinglePost({name, time}) {
           <button
             className="post-btn up-vote filter-gray"
             id="up"
-            onClick={(event) => voteFunc(event, voteCount, setVoteCount)}>
+            onClick={(event) => voteFunc(event, voteCount, setVoteCount , postID)}>
             😍
           </button>
           <p>{voteCount}</p>
           <button
             id="down"
             className="post-btn down-vote filter-gray"
-            onClick={(event) => voteFunc(event, voteCount, setVoteCount)}>
+            onClick={(event) => voteFunc(event, voteCount, setVoteCount , postID)}>
             🤢
           </button>
         </div>
