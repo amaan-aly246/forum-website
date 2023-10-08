@@ -1,11 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Navigate } from "react-router-dom"
 import "../Login/Login.css"
 import { loginFunc } from "../../functions/loginFunc"
+import { DataContext } from "../Context/Context"
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [redirect, setRedirect] = useState(false)
+  const { setIsLogin } = useContext(DataContext)
 
   const handleOnChange = (event) => {
     event.target.type == "password"
@@ -15,7 +17,14 @@ function Login() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
-    loginFunc(username, password, setUsername, setPassword, setRedirect)
+    loginFunc(
+      username,
+      password,
+      setUsername,
+      setPassword,
+      setRedirect,
+      setIsLogin
+    )
   }
   if (redirect) return <Navigate to={"/"}></Navigate>
 

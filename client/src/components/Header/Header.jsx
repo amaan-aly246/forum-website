@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -6,10 +6,9 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { searchFun } from "../../functions/searchFunc"
 import "./Header.css"
 import { logoutFunc } from "../../functions/logoutFunc"
-
-function Header() {
-  const [isLogin, setIsLogin] = useState(true)
-
+import { DataContext } from "../Context/Context"
+export default function Header() {
+  const { isLogin, setIsLogin } = useContext(DataContext)
   return (
     <header className="header">
       <nav className="nav-container">
@@ -28,24 +27,29 @@ function Header() {
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           style={{ color: "#85a3d6" }}
-          className="search-icon "
+          className="search-icon"
           onClick={searchFun}
         />
       </div>
-      {isLogin && (
+      {!isLogin && (
         <span className="loginRegister">
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </span>
       )}
-      {!isLogin && (
+      {isLogin && (
         <span className="loginRegister">
           <Link to="/createPost">Create post</Link>
-          <Link onClick={logoutFunc}>logOut</Link>
+          <Link
+            onClick={() => {
+              logoutFunc(setIsLogin)
+            }}>
+            logOut
+          </Link>
         </span>
       )}
     </header>
   )
 }
 
-export default Header
+// const [isLogin, setIsLogin] = useState(true)

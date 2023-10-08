@@ -1,4 +1,4 @@
-export const loginFunc = async (username, password, setUsername, setPassword, setRedirect) => {
+export const loginFunc = async (username, password, setUsername, setPassword, setRedirect , setIsLogin) => {
     try {
         const response = await fetch('http://localhost:3000/login', {
             method: 'POST',
@@ -12,8 +12,9 @@ export const loginFunc = async (username, password, setUsername, setPassword, se
         if (response.ok) {
             alert('Logout successful');
             setRedirect(true);
-            // setUsername('');
-            // setPassword('');
+            setUsername('');
+            setPassword('');
+            setIsLogin(true);
         }
 
     } catch (error) {
