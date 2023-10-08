@@ -15,10 +15,10 @@ function Header() {
       <nav className="nav-container">
         <ul>
           <li>
-            <Link to="/">all post</Link>
+            <Link to="/">all posts</Link>
           </li>
           <li>
-            <Link to="/myPost">my post</Link>
+            <Link to="/myPost">my posts</Link>
           </li>
           <li></li>
         </ul>

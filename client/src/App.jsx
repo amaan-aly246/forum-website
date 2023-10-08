@@ -5,7 +5,6 @@ import AllPosts from "./components/AllPosts/AllPosts"
 import MyPosts from "./components/MyPosts/MyPosts"
 import Login from "./components/Login/Login"
 import Register from "./components/Register/Register"
-import LogOut from "./components/LogOut/LogOut"
 import CreatePosts from "./components/CreatePosts/CreatePosts"
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Route path="/myPost" element={<MyPosts />} />
           <Route path="/login" element={<Login></Login>} />
           <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<LogOut></LogOut>} />
           <Route path="/createPost" element={<CreatePosts />} />
         </Route>
       </Routes>
