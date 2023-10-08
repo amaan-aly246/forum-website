@@ -1,4 +1,4 @@
-export const logoutFunc = () => {
+export const logoutFunc = async (username, password, setUsername, setPassword, setRedirect) => {
+   return
 
-    console.log("log out ");
 }

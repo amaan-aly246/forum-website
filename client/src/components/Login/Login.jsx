@@ -1,9 +1,12 @@
 import React, { useState } from "react"
+import { Navigate } from "react-router-dom"
 import "../Login/Login.css"
-import {loginFunc} from "../../functions/loginFunc"
+import { loginFunc } from "../../functions/loginFunc"
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [redirect, setRedirect] = useState(false)
+
   const handleOnChange = (event) => {
     event.target.type == "password"
       ? setPassword(event.target.value)
@@ -11,12 +14,13 @@ function Login() {
   }
 
   const handleFormSubmit = (event) => {
-    event.preventDefault();
-    loginFunc(username, password, setUsername, setPassword);
-  };
+    event.preventDefault()
+    loginFunc(username, password, setUsername, setPassword, setRedirect)
+  }
+  if (redirect) return <Navigate to={"/"}></Navigate>
+
   return (
-    <form
-      onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit}>
       <h2>Login </h2>
       <input
         type="text"
@@ -36,5 +40,3 @@ function Login() {
 }
 
 export default Login
-
-

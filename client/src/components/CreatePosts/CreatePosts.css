@@ -1,7 +1,13 @@
-form > h2{
-    font-family: 'Courier New', Courier, monospace;
-    position: absolute;
-    transform: translateY(-90px);
-    background-color: #e8e8e4;
-    margin-bottom: 10px;
+.create-post-form > h2 {
+  font-family: "Courier New", Courier, monospace;
+  position: absolute;
+  transform: translateY(-90px);
+  background-color: #e8e8e4;
+  margin-bottom: 10px;
+}
+.create-post-form {
+  border: 2px solid black;
+  padding: 20px;
+  margin-inline: 50px;
+  margin-top: 50px;
 }

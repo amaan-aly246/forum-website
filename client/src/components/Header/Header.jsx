@@ -8,7 +8,7 @@ import "./Header.css"
 import { logoutFunc } from "../../functions/logoutFunc"
 
 function Header() {
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   return (
     <header className="header">

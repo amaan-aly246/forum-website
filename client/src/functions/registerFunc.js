@@ -1,4 +1,5 @@
-export const registerFunc = async (username, password, setUsername, setPassword) => {
+
+export const registerFunc = async (username, password, setRedirect, setUsername, setPassword) => {
 
     try {
         const response = await fetch("http://localhost:3000/register", {
@@ -9,23 +10,19 @@ export const registerFunc = async (username, password, setUsername, setPassword)
             }),
             headers: { "Content-Type": "application/json" },
         })
-        setPassword("")
-        setUsername("")
-        if (response.status !== 201) {
-            alert("Registration failed")
-        } else {
-            const response = await fetch("http://localhost:3000/login", {
-                method: "POST",
-                body: JSON.stringify({
-                    username,
-                    password,
-                }),
-                headers: { "Content-Type": "application/json" },
-                credentials: "include",
-            })
-            alert("Registration successful")
+        const data = await response.json();
+        if (response.ok) {
+            setUsername("")
+            setPassword("")
+            setRedirect(true)
+            alert("You have successfully registered!")
+            // return data;
         }
+        else {
+            alert("Username already exists!")
+        }
+
     } catch (error) {
-        console.log(error)
+        console.log("error in regFunc", error)
     }
 }
