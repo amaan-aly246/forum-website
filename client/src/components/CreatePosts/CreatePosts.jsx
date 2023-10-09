@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useState , useContext } from "react"
 import { Navigate } from "react-router-dom"
+import { DataContext } from "../Context/Context"
 import "./CreatePosts.css"
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
@@ -8,13 +9,11 @@ function CreatePosts() {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [redirect, setRedirect] = useState(false)
-
+  const {currentUser,setCurrentUser} = useContext(DataContext)
   const handleSubmit = async (event) => {
     event.preventDefault()
-
     if (title && content) {
-      const postData = await createNewPost(title, content, setRedirect)
-      console.log(postData)
+      const postData = await createNewPost(title, content, setRedirect , currentUser , setCurrentUser)
     } else {
       alert("Please fill all the fields")
     }

@@ -1,24 +1,35 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./AllPosts.css"
 import SinglePost from "./SinglePost"
-import { generateUniqueID } from "../../functions/generateUniqueID"
+// import { generateUniqueID } from "../../functions/generateUniqueID";
+import { fetchAllPosts } from "../../functions/fetchAllPosts"
 
 function AllPosts() {
-  const name = "Amaan"
-  const time = "12:30 am"
+  // const name = "Amaan"
+  const [allPosts, setAllPosts] = useState([])
+
+  useEffect(() => {
+    fetchAllPosts(setAllPosts)
+  }, [])
+
+  // useEffect(() => {
+  //   if (allPosts.length > 0) {
+  //     console.log(allPosts);
+  //   }
+  // }, [allPosts]);
 
   return (
     <>
-      <SinglePost
-        key={generateUniqueID()}
-        name={name}
-        time={time}
-        postID={generateUniqueID()}></SinglePost>
-      <SinglePost
-        key={generateUniqueID()}
-        name={name}
-        time={time}
-        postID={generateUniqueID()}></SinglePost>
+      {allPosts.map(({ _id, content, createdAt, title , username}) => (
+        <SinglePost
+          key={_id}
+          username={username}
+          time={createdAt}
+          postID={_id}
+          title={title}
+          content={content}
+        />
+      ))}
     </>
   )
 }

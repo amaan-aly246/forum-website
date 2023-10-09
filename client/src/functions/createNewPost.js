@@ -1,7 +1,8 @@
-export const createNewPost = async (title, content, setRedirect) => {
+export const createNewPost = async (title, content, setRedirect, currentUser, setCurrentUser) => {
     const createPost = {
         title: title,
         content: content,
+        username: currentUser   
     }
     try {
         // console.log(createPost)

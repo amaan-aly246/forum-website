@@ -1,7 +1,17 @@
 const Post = require('../models/posts');
 
 const getAllPost = async (req, res) => {
-  
+  try {
+    const data = await Post.find({}).sort({ createdAt: -1 }).limit(10);
+    if(!data) {
+      return res.status(404).json({ message: 'No post found' });
+    }
+    else{
+        return res.status(200).json(data);
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 const getMyPost = (req, res) => {

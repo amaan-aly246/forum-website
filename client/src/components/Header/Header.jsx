@@ -1,8 +1,6 @@
 import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 // import { searchFun } from "../../functions/searchFunc"
 import "./Header.css"
 import { logoutFunc } from "../../functions/logoutFunc"
