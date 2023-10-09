@@ -6,7 +6,7 @@ ul {
   /* background-color: red; */
 }
 
-header {
+.header {
   display: flex;
   justify-content: space-between;
   background-color: var(--secondaryColor);

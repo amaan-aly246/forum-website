@@ -5,7 +5,7 @@ const { getAllPost, getOneMyPost, getEachPost, getMyPost, createPost, deletePost
 
 router.route('/getallPost').get(getAllPost);
 router.route('/myPost').get(getMyPost);
-router.route('/:id').get(getEachPost);
+router.route('/').get(getEachPost);
 router.route('/createPost').post(createPost);
 router.route('/myPost/:id').delete(deletePost).get(getOneMyPost);
 

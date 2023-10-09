@@ -1,14 +1,28 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import { Navigate } from "react-router-dom"
 import "./AllPosts.css"
 import { voteFunc } from "../../functions/voteFunc"
 import ReactHTMLParser from "react-html-parser"
 import TimeAgo from "timeago-react"
+import { DataContext } from "../Context/Context"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPaperPlane, faMessage } from "@fortawesome/free-solid-svg-icons"
+import { fetchEachPost } from "../../functions/fetchEachPost"
 function SinglePost({ username, time, postID, content, title }) {
   const [voteCount, setVoteCount] = useState(0)
+  const [redirect, setRedirect] = useState(false)
+  const [clickedPostID, setClickedPostID] = useState("")
+  const { setSpecificPostData } = useContext(DataContext)
+  var postID;
+  const handleClick = (event) => {
+    postID = event.target.closest(".post-container").id
+    // setClickedPostID(postID)
+    fetchEachPost(postID, setRedirect , setSpecificPostData)
+  }
+
+  if (redirect) return <Navigate to={`/${postID}`}></Navigate>
   return (
-    <section className="post-container" id={`post-${postID}`}>
+    <section className="post-container" id={postID} onClick={handleClick}>
       <header className="post-header">
         <span className="author">
           {username} <TimeAgo datetime={time} />
