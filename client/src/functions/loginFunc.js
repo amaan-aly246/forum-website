@@ -1,4 +1,4 @@
-export const loginFunc = async (username, password, setUsername, setPassword, setRedirect , setIsLogin) => {
+export const loginFunc = async (username, password, setUsername, setPassword, setRedirect , setIsLogin , setCurrentUser) => {
     try {
         const response = await fetch('http://localhost:3000/login', {
             method: 'POST',
@@ -10,11 +10,17 @@ export const loginFunc = async (username, password, setUsername, setPassword, se
             credentials: 'include'
         });
         if (response.ok) {
+            const {username} = await response.json();
+            
             alert('Logout successful');
             setRedirect(true);
+           setCurrentUser(username)
+            setIsLogin(true);
+        }
+        else{
+            alert('Invalid credentials entered');
             setUsername('');
             setPassword('');
-            setIsLogin(true);
         }
 
     } catch (error) {

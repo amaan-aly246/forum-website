@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
-import { searchFun } from "../../functions/searchFunc"
+// import { searchFun } from "../../functions/searchFunc"
 import "./Header.css"
 import { logoutFunc } from "../../functions/logoutFunc"
 import { DataContext } from "../Context/Context"
 export default function Header() {
-  const { isLogin, setIsLogin } = useContext(DataContext)
+  const { isLogin, setIsLogin, currentUser } = useContext(DataContext)
   return (
     <header className="header">
       <nav className="nav-container">
@@ -19,18 +19,16 @@ export default function Header() {
           <li>
             <Link to="/myPost">my posts</Link>
           </li>
-          <li></li>
+          <li>
+            {isLogin && (
+              <span>
+                <Link to="/createPost">Create post</Link>
+              </span>
+            )}
+          </li>
         </ul>
       </nav>
-      <div className="search-container">
-        <input type="text" placeholder="Search" className="search-input" />
-        <FontAwesomeIcon
-          icon={faMagnifyingGlass}
-          style={{ color: "#85a3d6" }}
-          className="search-icon"
-          onClick={searchFun}
-        />
-      </div>
+
       {!isLogin && (
         <span className="loginRegister">
           <Link to="/login">Login</Link>
@@ -39,17 +37,26 @@ export default function Header() {
       )}
       {isLogin && (
         <span className="loginRegister">
-          <Link to="/createPost">Create post</Link>
           <Link
             onClick={() => {
               logoutFunc(setIsLogin)
             }}>
             logOut
           </Link>
+          <Link>{currentUser.toUpperCase()}</Link>
         </span>
       )}
     </header>
   )
 }
 
-// const [isLogin, setIsLogin] = useState(true)
+
+      {/* <div className="search-container">
+        <input type="text" placeholder="Search" className="search-input" /> 
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          style={{ color: "#85a3d6" }}
+          className="search-icon"
+          onClick={searchFun}
+        />
+      </div> */}

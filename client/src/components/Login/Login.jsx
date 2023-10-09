@@ -4,10 +4,11 @@ import "../Login/Login.css"
 import { loginFunc } from "../../functions/loginFunc"
 import { DataContext } from "../Context/Context"
 function Login() {
+  const { setIsLogin, setCurrentUser } = useContext(DataContext)
+
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [redirect, setRedirect] = useState(false)
-  const { setIsLogin } = useContext(DataContext)
 
   const handleOnChange = (event) => {
     event.target.type == "password"
@@ -23,7 +24,8 @@ function Login() {
       setUsername,
       setPassword,
       setRedirect,
-      setIsLogin
+      setIsLogin,
+      setCurrentUser
     )
   }
   if (redirect) return <Navigate to={"/"}></Navigate>

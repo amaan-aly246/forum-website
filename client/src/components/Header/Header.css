@@ -1,7 +1,7 @@
 ul {
   display: flex;
   gap: 1.4rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: black;
   /* background-color: red; */
 }
@@ -14,7 +14,7 @@ header {
 
 .search-container {
   align-self: center;
-  margin-right: -25px;
+  margin-right: -60px;
   cursor: pointer;
 }
 

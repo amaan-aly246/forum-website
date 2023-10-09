@@ -23,11 +23,10 @@ const login = async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await Users.findOne({ username });
-        // console.log(user);
         const passOk = bcrypt.compareSync(password, user.password)
         if (user && passOk) {
             const token = jwt.sign({ username, id: user._id }, secret)
-            res.cookie('token', token).status(200).json({ message: 'Login successful' });
+            res.cookie('token', token).status(200).json({ username });
 
         } else {
             res.status(401).json({ error: 'Invalid credentials' });
@@ -37,6 +36,15 @@ const login = async (req, res) => {
     }
 };
 
+const logout = async (req, res) => {
+    try {
+        res.cookie('token', '').status(200).send('Logout successful')
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 
-module.exports = { register, login };
+
+module.exports = { register, login , logout };

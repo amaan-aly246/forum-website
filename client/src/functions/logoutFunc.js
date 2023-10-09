@@ -1,7 +1,14 @@
-export const logoutFunc = (setIsLogin) => {
-   setIsLogin(false)
-   console.log('logoutFunc called');
+export const logoutFunc = async (setIsLogin) => {
+   try {
+      const response = await fetch('http://localhost:3000/logout', {
+         credentials: "include",
+         method: "GET",
+      })
 
+      if (response.ok) {
+         setIsLogin(false);
+      }
+   } catch (error) {
+      console.log(error.message)
+   }
 }
-
-//username, password, setUsername, setPassword, setRedirect,
