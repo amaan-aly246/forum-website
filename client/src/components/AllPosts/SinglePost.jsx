@@ -11,18 +11,17 @@ import { fetchEachPost } from "../../functions/fetchEachPost"
 function SinglePost({ username, time, postID, content, title }) {
   const [voteCount, setVoteCount] = useState(0)
   const [redirect, setRedirect] = useState(false)
-  const [clickedPostID, setClickedPostID] = useState("")
   const { setSpecificPostData } = useContext(DataContext)
-  var postID;
+
+  var postID
   const handleClick = (event) => {
     postID = event.target.closest(".post-container").id
-    // setClickedPostID(postID)
-    fetchEachPost(postID, setRedirect , setSpecificPostData)
+    fetchEachPost(postID, setRedirect, setSpecificPostData)
   }
 
   if (redirect) return <Navigate to={`/${postID}`}></Navigate>
   return (
-    <section className="post-container" id={postID} onClick={handleClick}>
+    <section className="post-container" id={postID}>
       <header className="post-header">
         <span className="author">
           {username} <TimeAgo datetime={time} />
@@ -48,20 +47,12 @@ function SinglePost({ username, time, postID, content, title }) {
             🤢
           </button>
         </div>
-        <div className="comments">
+        <div className="comments" onClick={handleClick}>
           <FontAwesomeIcon icon={faMessage} style={{ color: "#008000" }} />
           <p></p>
         </div>
       </aside>
-      <footer className="post-footer">
-        <textarea
-          id="Textarea"
-          rows="4"
-          cols="50"
-          placeholder="comment..."></textarea>
-        <FontAwesomeIcon icon={faPaperPlane} className="paper-plane" />
-      </footer>
-      <main className="post-main">
+      <main className="post-main" onClick={handleClick}>
         <h3 className="title">{title}</h3>
         {ReactHTMLParser(content)}
       </main>

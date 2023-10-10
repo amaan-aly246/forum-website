@@ -1,6 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faComment } from "@fortawesome/free-solid-svg-icons"
+import './Comment.css'
 function Comment() {
   return (
     <div className="comment" id="2">

@@ -1,5 +1,5 @@
 const Post = require('../models/posts');
-
+const Comment = require('../models/comment');
 const getAllPost = async (req, res) => {
   try {
     const data = await Post.find({}).sort({ createdAt: -1 }).limit(10);
@@ -44,4 +44,15 @@ const getEachPost = async (req, res) => {
 const getOneMyPost = (req, res) => {
   res.send('get one my post');
 }
-module.exports = { getAllPost, getMyPost, createPost, getOneMyPost, deletePost, getEachPost };
+
+const createComment = async (req, res) => {
+  try {
+    const { postID, username, comment } = req.body;
+    const commentData = await Comment.create({ postID, username, comment });
+    res.status(200).json(commentData);
+
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+module.exports = { getAllPost, getMyPost, createPost, getOneMyPost, deletePost, getEachPost, createComment };

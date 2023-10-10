@@ -42,6 +42,3 @@ function CreatePosts() {
 }
 
 export default CreatePosts
-
-//
-//

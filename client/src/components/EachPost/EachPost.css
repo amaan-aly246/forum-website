@@ -1,3 +1,21 @@
+.parent-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-area {
+  width: 90%;
+  margin-inline: auto;
+  height: 200px;
+  /* background-color: red; */
+}
+
+.post-comments {
+  width: 35em;
+  margin-inline: auto;
+  margin-top: 30px;
+}
+
 .Each-post-header {
   grid-column: 2/3;
   grid-row: 1/2;
@@ -7,38 +25,17 @@
 .Each-post-main {
   grid-column: 2/3;
   grid-row: 2/4;
-  /* background-color: red; */
+  /* background-color: palegreen; */
   overflow: scroll;
 }
-
-.comments-container {
-  margin-top: 40px;
-  /* border: 2px solid black; */
-  width: 88vw;
-  height: min-content;
-  padding: 10px;
-}
-.comment {
-  margin-bottom: 20px;
-  background-color: var(--secondaryColor);
-}
-.comment > .comment-header {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.comment > .comment-footer {
+.add-comment-btn {
   cursor: pointer;
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  position: absolute;
+  right: 2.4em;
+  bottom: 0;
+  color: #39d979;
 }
-.comment > .comment-main {
-  font-family: Verdana, Tahoma, sans-serif;
-  font-size: 1.3em;
-}
+
 .Each-post-aside {
   grid-column: 1 / 2;
   grid-row: 1/4;
