@@ -1,18 +1,20 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faComment } from "@fortawesome/free-solid-svg-icons"
-import './Comment.css'
-function Comment() {
+import ReactHTMLParser from "react-html-parser"
+import TimeAgo from "timeago-react"
+import "./Comment.css"
+function Comment({ singleComment }) {
   return (
-    <div className="comment" id="2">
+    <div className="comment">
       <header className="comment-header">
-        <span className="comment-username">Username</span>
-        <span className="comment-time">time</span>
+        <span className="comment-username">{singleComment.username}</span>
+        <span className="comment-time">
+          <TimeAgo datetime={singleComment.createdAt} />
+        </span>
       </header>
       <main className="comment-main">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis veniam
-        nisi corrupti optio placeat vitae exercitationem, vel aperiam. Vel,
-        debitis?
+        {ReactHTMLParser(singleComment.comment)}
       </main>
       <footer className="comment-footer">
         <FontAwesomeIcon icon={faHeart} style={{ color: "#eb0000" }} />

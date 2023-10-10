@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import "./EachPost.css"
 import { voteFunc } from "../../functions/voteFunc"
 import Comment from "./Comment"
@@ -9,20 +9,28 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import TimeAgo from "timeago-react"
 import { DataContext } from "../Context/Context"
 import { createNewComment } from "../../functions/createNewComment"
+import { fetchComment } from "../../functions/fetchComment"
 function EachPost() {
   const [voteCount, setVoteCount] = useState(0)
-  const { specificPostData, isLogin } = useContext(DataContext)
-  const { username, time, _id:postID, content, title } = specificPostData
-  const [comment, setComment] = useState('');
-  
+  const { specificPostData, isLogin , currentUser } = useContext(DataContext)
+  const { username, time, _id: postID, content, title } = specificPostData
+  const [comment, setComment] = useState("")
+  const [fetchedComments, setFetchedComments] = useState([])
+
   const handleClick = (event) => {
     if (isLogin && comment !== "") {
-      createNewComment(postID, username ,comment)
-    }
-    else{
+      createNewComment(postID, currentUser, comment, setComment)
+    } else {
       alert("You need to login first")
     }
   }
+  useEffect(() => {
+    const fetchCommentFunc = async () => {
+      const data = await fetchComment(postID)
+      setFetchedComments(data)
+    }
+    fetchCommentFunc()
+  }, [])
   return (
     <div className="parent-container">
       <section className="Each-post-container" id={`post-${postID}`}>
@@ -71,13 +79,17 @@ function EachPost() {
         </span>
       </section>
       <section className="post-comments">
-        <Comment />
-        <Comment />
+        {console.log(fetchedComments)}
+        {fetchedComments &&
+          fetchedComments.map((singleComment) => {
+            // console.log(singleComment)
+            return (
+              <Comment key={singleComment._id} singleComment={singleComment} />
+            )
+          })}
       </section>
     </div>
   )
 }
 
 export default EachPost
-
-

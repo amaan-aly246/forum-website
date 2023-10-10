@@ -31,6 +31,8 @@ const deletePost = (req, res) => {
   res.send('delete post');
 }
 
+
+
 const getEachPost = async (req, res) => {
   try {
     const postId = req.query.postId;
@@ -55,4 +57,21 @@ const createComment = async (req, res) => {
     console.log(error.message);
   }
 }
-module.exports = { getAllPost, getMyPost, createPost, getOneMyPost, deletePost, getEachPost, createComment };
+
+
+
+const fetchComment = async (req, res) => {
+  try {
+    const postID = req.query.postID;
+    const Data = await Comment.find({ postID }).sort({ createdAt: -1 }).limit(10)
+    if (Data) {
+      res.status(200).json(Data);
+    }
+    else {
+      res.status(404).send('No comment found');
+    }
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+module.exports = { getAllPost, getMyPost, createPost, getOneMyPost, deletePost, getEachPost, createComment, fetchComment };
