@@ -1,18 +1,25 @@
 .comment > .comment-main {
     font-family: Verdana, Tahoma, sans-serif;
-    font-size: 1.3em;
+    font-size: 1em;
+    margin-left: 10px;
   }
 
-
+.comment-header > .comment-username {
+  text-transform: lowercase;
+  color: dodgerblue;
+}
   .comment {
     margin-bottom: 20px;
     background-color: var(--secondaryColor);
+    border-radius: 15px;
   }
   .comment > .comment-header {
     display: flex;
     gap: 10px;
     align-items: center;
     margin-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 10px;
   }
   .comment > .comment-footer {
     cursor: pointer;
@@ -20,12 +27,13 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    margin-left: 10px;
+    padding: 10px;
   }
 
 
   .comments-container {
     margin-top: 40px;
-    /* border: 2px solid black; */
     width: 88vw;
     height: min-content;
     padding: 10px;

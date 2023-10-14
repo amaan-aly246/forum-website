@@ -82,7 +82,6 @@ function EachPost() {
         {console.log(fetchedComments)}
         {fetchedComments &&
           fetchedComments.map((singleComment) => {
-            // console.log(singleComment)
             return (
               <Comment key={singleComment._id} singleComment={singleComment} />
             )

@@ -8,7 +8,7 @@ function Comment({ singleComment }) {
   return (
     <div className="comment">
       <header className="comment-header">
-        <span className="comment-username">{singleComment.username}</span>
+        <span className="comment-username">{`@${singleComment.username}`}</span>
         <span className="comment-time">
           <TimeAgo datetime={singleComment.createdAt} />
         </span>

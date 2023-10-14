@@ -14,8 +14,20 @@ const getAllPost = async (req, res) => {
   }
 }
 
-const getMyPost = (req, res) => {
-  res.send('get my post ');
+const getMyPost = async (req, res) => {
+  try {
+    const currentUser = req.query.currentUser;
+    console.log("from controller", currentUser);
+    const data = await Post.find({ username: currentUser }).sort({ createdAt: -1 }).limit(10);
+    if (!data) {
+      return res.status(404).json({ message: 'No post found' });
+    }
+    else {
+      return res.status(200).json(data);
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 const createPost = async (req, res) => {
@@ -43,8 +55,8 @@ const getEachPost = async (req, res) => {
   }
 }
 
-const getOneMyPost = (req, res) => {
-  res.send('get one my post');
+const getOneMyPost =  (req, res) => {
+  
 }
 
 const createComment = async (req, res) => {

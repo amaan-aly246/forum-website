@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react"
-import { Link } from "react-router-dom"
-
-// import { searchFun } from "../../functions/searchFunc"
+import { Link, Navigate } from "react-router-dom"
 import "./Header.css"
 import { logoutFunc } from "../../functions/logoutFunc"
 import { DataContext } from "../Context/Context"
 export default function Header() {
   const { isLogin, setIsLogin, currentUser } = useContext(DataContext)
+  const [redirect, setRedirect] = useState(false);
+  
+  if(redirect) return <Navigate to="/"></Navigate>
   return (
     <header className="header">
       <nav className="nav-container">
@@ -15,7 +16,10 @@ export default function Header() {
             <Link to="/">all posts</Link>
           </li>
           <li>
-            <Link to="/myPost">my posts</Link>
+            {isLogin &&
+              <Link to="/myPost">my posts</Link>
+            }
+            
           </li>
           <li>
             {isLogin && (
@@ -37,7 +41,7 @@ export default function Header() {
         <span className="loginRegister">
           <Link
             onClick={() => {
-              logoutFunc(setIsLogin)
+              logoutFunc(setIsLogin , setRedirect)
             }}>
             logOut
           </Link>
