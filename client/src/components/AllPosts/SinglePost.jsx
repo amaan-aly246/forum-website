@@ -9,10 +9,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPaperPlane, faMessage } from "@fortawesome/free-solid-svg-icons"
 import { fetchEachPost } from "../../functions/fetchEachPost"
 function SinglePost({ username, time, postID, content, title }) {
-  const [voteCount, setVoteCount] = useState(0)
   const [redirect, setRedirect] = useState(false)
-  const { setSpecificPostData } = useContext(DataContext)
-
+  const { setSpecificPostData } =
+    useContext(DataContext)
+ const [voteCount, setVoteCount] = useState(0);
+ 
   var postID
   const handleClick = (event) => {
     postID = event.target.closest(".post-container").id
@@ -21,7 +22,7 @@ function SinglePost({ username, time, postID, content, title }) {
 
   if (redirect) return <Navigate to={`/${postID}`}></Navigate>
   return (
-    <section className="post-container" id={postID}>
+    <section className="post-container" id={`postID-${postID}`}>
       <header className="post-header">
         <span className="author">
           {username} <TimeAgo datetime={time} />

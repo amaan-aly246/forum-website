@@ -12,7 +12,7 @@ import { createNewComment } from "../../functions/createNewComment"
 import { fetchComment } from "../../functions/fetchComment"
 function EachPost() {
   const [voteCount, setVoteCount] = useState(0)
-  const { specificPostData, isLogin , currentUser } = useContext(DataContext)
+  const { specificPostData, isLogin, currentUser } = useContext(DataContext)
   const { username, time, _id: postID, content, title } = specificPostData
   const [comment, setComment] = useState("")
   const [fetchedComments, setFetchedComments] = useState([])
@@ -33,7 +33,7 @@ function EachPost() {
   }, [])
   return (
     <div className="parent-container">
-      <section className="Each-post-container" id={`post-${postID}`}>
+      <section className="Each-post-container" id={`postID-${postID}`}>
         <header className="Each-post-header">
           <span className="Each-post-author">
             {username} <TimeAgo datetime={time} />

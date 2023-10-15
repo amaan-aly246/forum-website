@@ -10,7 +10,7 @@ const getAllPost = async (req, res) => {
       return res.status(200).json(data);
     }
   } catch (error) {
-    console.log(error.message);
+    console.log( error.message);
   }
 }
 
@@ -39,10 +39,6 @@ const createPost = async (req, res) => {
   }
 }
 
-const deletePost = (req, res) => {
-  res.send('delete post');
-}
-
 
 
 const getEachPost = async (req, res) => {
@@ -55,9 +51,7 @@ const getEachPost = async (req, res) => {
   }
 }
 
-const getOneMyPost =  (req, res) => {
-  
-}
+
 
 const createComment = async (req, res) => {
   try {
@@ -71,6 +65,9 @@ const createComment = async (req, res) => {
 }
 
 
+const updateVoteCount = async (req, res)=>{
+  res.send('update vote count');
+}
 
 const fetchComment = async (req, res) => {
   try {
@@ -86,4 +83,4 @@ const fetchComment = async (req, res) => {
     console.log(error.message)
   }
 }
-module.exports = { getAllPost, getMyPost, createPost, getOneMyPost, deletePost, getEachPost, createComment, fetchComment };
+module.exports = { getAllPost, getMyPost, createPost, getEachPost, createComment, fetchComment , updateVoteCount};

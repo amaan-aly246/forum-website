@@ -1,22 +1,26 @@
 
-
 export function voteFunc(event, voteCount, setVoteCount, postID) {
-
-  const postElement = event.target.closest(`.post-container`);
+  const postElement = event.target.closest(`#postID-${postID}`);
+  // console.log(postElement);
   const up = postElement.querySelector("#up");
+
   const down = postElement.querySelector("#down");
 
-  if (event.target.id === "up") {
+
+  if (event.target.id === up.id) {
     if (!down.classList.contains("filter-gray")) {
       setVoteCount(voteCount + 2);
+
       down.classList.add("filter-gray");
       up.classList.remove("filter-gray");
     }
     else {
       if (up.classList.contains("filter-gray")) {
         setVoteCount(voteCount + 1);
+
         up.classList.remove("filter-gray");
       } else {
+
         setVoteCount(voteCount - 1);
         up.classList.add("filter-gray");
       }

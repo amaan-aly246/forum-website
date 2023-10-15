@@ -1,11 +1,11 @@
-export const createNewPost = async (title, content, setRedirect, currentUser, setCurrentUser) => {
+export const createNewPost = async (title, content, setRedirect, currentUser, setCurrentUser , voteCount) => {
     const createPost = {
         title: title,
         content: content,
-        username: currentUser   
+        username: currentUser,
+        voteCount: voteCount,   
     }
     try {
-        // console.log(createPost)
         const response = await fetch('http://localhost:3000/posts/createPost', {
             method: 'POST',
             body: createPost,

@@ -12,7 +12,7 @@ export const loginFunc = async (username, password, setUsername, setPassword, se
         if (response.ok) {
             const {username} = await response.json();
             
-            alert('Logout successful');
+            alert('Login successful');
             setRedirect(true);
            setCurrentUser(username)
             setIsLogin(true);

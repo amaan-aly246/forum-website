@@ -1,5 +1,7 @@
 export const fetchComment = async (postID) => {
     try {
+        postID = postID.split("-")[0];
+
         console.log('postID', postID)
         const response = await fetch(`http://localhost:3000/posts/comment?postID=${postID}`, {
             method: 'GET',
