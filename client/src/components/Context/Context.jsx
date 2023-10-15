@@ -8,7 +8,7 @@ const DataProvider = ({ children }) => {
   const [specificPostData, setSpecificPostData] = useState({});
 
   const [voteCount, setVoteCount] = useState(0);
-  const url = 'https://forum-website-client.vercel.app'
+  const url = 'https://forum-website-api.onrender.com'
   
 
   return (
