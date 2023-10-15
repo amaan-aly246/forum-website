@@ -12,21 +12,21 @@ import { createNewComment } from "../../functions/createNewComment"
 import { fetchComment } from "../../functions/fetchComment"
 function EachPost() {
   const [voteCount, setVoteCount] = useState(0)
-  const { specificPostData, isLogin, currentUser } = useContext(DataContext)
+  const { specificPostData, isLogin, currentUser , url } = useContext(DataContext)
   const { username, time, _id: postID, content, title } = specificPostData
   const [comment, setComment] = useState("")
   const [fetchedComments, setFetchedComments] = useState([])
 
   const handleClick = (event) => {
     if (isLogin && comment !== "") {
-      createNewComment(postID, currentUser, comment, setComment)
+      createNewComment(postID, currentUser, comment, setComment , url)
     } else {
       alert("You need to login first")
     }
   }
   useEffect(() => {
     const fetchCommentFunc = async () => {
-      const data = await fetchComment(postID)
+      const data = await fetchComment(postID , url)
       setFetchedComments(data)
     }
     fetchCommentFunc()

@@ -9,11 +9,11 @@ function CreatePosts() {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [redirect, setRedirect] = useState(false)
-  const {currentUser,setCurrentUser , voteCount} = useContext(DataContext)
+  const {currentUser,setCurrentUser , voteCount , url} = useContext(DataContext)
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (title && content) {
-      const postData = await createNewPost(title, content, setRedirect , currentUser , setCurrentUser , voteCount)
+      const postData = await createNewPost(title, content, setRedirect , currentUser , setCurrentUser , voteCount , url)
     } else {
       alert("Please fill all the fields")
     }

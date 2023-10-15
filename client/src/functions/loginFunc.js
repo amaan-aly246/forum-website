@@ -1,6 +1,6 @@
-export const loginFunc = async (username, password, setUsername, setPassword, setRedirect , setIsLogin , setCurrentUser) => {
+export const loginFunc = async (username, password, setUsername, setPassword, setRedirect , setIsLogin , setCurrentUser, url) => {
     try {
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch(`${url}/login`, {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({ username, password }),

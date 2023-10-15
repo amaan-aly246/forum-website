@@ -8,10 +8,11 @@ const DataProvider = ({ children }) => {
   const [specificPostData, setSpecificPostData] = useState({});
 
   const [voteCount, setVoteCount] = useState(0);
+  const url = 'http://localhost:3000'
   
 
   return (
-    <DataContext.Provider value={{ isLogin, setIsLogin , currentUser , setCurrentUser , specificPostData , setSpecificPostData , voteCount , setVoteCount}}>
+    <DataContext.Provider value={{ isLogin, setIsLogin , currentUser , setCurrentUser , specificPostData , setSpecificPostData , voteCount , setVoteCount, url}}>
       {children}
     </DataContext.Provider>
   )

@@ -1,6 +1,6 @@
-export const logoutFunc = async (setIsLogin , setRedirect) => {
+export const logoutFunc = async (setIsLogin , setRedirect , url) => {
    try {
-      const response = await fetch('http://localhost:3000/logout', {
+      const response = await fetch(`${url}/logout`, {
          credentials: "include",
          method: "GET",
       })

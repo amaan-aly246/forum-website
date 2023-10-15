@@ -1,7 +1,7 @@
-export const fetchMyPosts = async (currentUser , setMyPost) => {
+export const fetchMyPosts = async (currentUser , setMyPost , url) => {
     try {
         console.log(currentUser);
-        const response = await fetch(`http://localhost:3000/posts/myPost?currentUser=${currentUser}`);
+        const response = await fetch(`${url}/posts/myPost?currentUser=${currentUser}`);
         const data = await response.json();
         setMyPost(data);
     } catch (error) {

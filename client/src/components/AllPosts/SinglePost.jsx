@@ -10,14 +10,13 @@ import { faPaperPlane, faMessage } from "@fortawesome/free-solid-svg-icons"
 import { fetchEachPost } from "../../functions/fetchEachPost"
 function SinglePost({ username, time, postID, content, title }) {
   const [redirect, setRedirect] = useState(false)
-  const { setSpecificPostData } =
-    useContext(DataContext)
- const [voteCount, setVoteCount] = useState(0);
- 
+  const { setSpecificPostData , url } = useContext(DataContext)
+  const [voteCount, setVoteCount] = useState(0)
+
   var postID
   const handleClick = (event) => {
     postID = event.target.closest(".post-container").id
-    fetchEachPost(postID, setRedirect, setSpecificPostData)
+    fetchEachPost(postID, setRedirect, setSpecificPostData , url)
   }
 
   if (redirect) return <Navigate to={`/${postID}`}></Navigate>

@@ -1,8 +1,8 @@
 
-export const registerFunc = async (username, password, setRedirect, setUsername, setPassword) => {
+export const registerFunc = async (username, password, setRedirect, setUsername, setPassword , url) => {
 
     try {
-        const response = await fetch("http://localhost:3000/register", {
+        const response = await fetch(`${url}/register`, {
             method: "POST",
             body: JSON.stringify({
                 username,

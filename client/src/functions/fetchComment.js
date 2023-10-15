@@ -1,9 +1,9 @@
-export const fetchComment = async (postID) => {
+export const fetchComment = async (postID, url) => {
     try {
         postID = postID.split("-")[0];
 
         console.log('postID', postID)
-        const response = await fetch(`http://localhost:3000/posts/comment?postID=${postID}`, {
+        const response = await fetch(`${url}/posts/comment?postID=${postID}`, {
             method: 'GET',
         })
         const data = await response.json()

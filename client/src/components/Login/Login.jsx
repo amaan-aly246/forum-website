@@ -4,7 +4,7 @@ import "../Login/Login.css"
 import { loginFunc } from "../../functions/loginFunc"
 import { DataContext } from "../Context/Context"
 function Login() {
-  const { setIsLogin, setCurrentUser } = useContext(DataContext)
+  const { setIsLogin, setCurrentUser , url} = useContext(DataContext)
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -25,7 +25,8 @@ function Login() {
       setPassword,
       setRedirect,
       setIsLogin,
-      setCurrentUser
+      setCurrentUser,
+      url
     )
   }
   if (redirect) return <Navigate to={"/"}></Navigate>

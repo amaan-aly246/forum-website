@@ -1,7 +1,7 @@
-export const fetchAllPosts = async (setAllPosts) => {
+export const fetchAllPosts = async (setAllPosts, url) => {
 
     try {
-        const response = await fetch('http://localhost:3000/posts/getallPost')
+        const response = await fetch(`${url}/posts/getallPost`)
         const postData = await response.json();
         setAllPosts(postData);
     } catch (error) {

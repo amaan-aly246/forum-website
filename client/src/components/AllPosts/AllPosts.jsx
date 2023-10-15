@@ -6,9 +6,9 @@ import { DataContext } from "../Context/Context"
 
 function AllPosts() {
   const [allPosts, setAllPosts] = useState([])
-  const { voteCount } = useContext(DataContext)
+  const { voteCount , url} = useContext(DataContext)
   useEffect(() => {
-    fetchAllPosts(setAllPosts)
+    fetchAllPosts(setAllPosts , url)
   }, [voteCount])
 
   return (

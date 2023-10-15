@@ -1,12 +1,13 @@
 import { Navigate } from "react-router-dom"
 import { registerFunc } from "../../functions/registerFunc"
 import "../Login/Login.css"
-import React, { useState } from "react"
-
+import React, { useState , useContext } from "react"
+import { DataContext} from '../Context/Context'
 function RegisterPage() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [redirect, setRedirect] = useState(false);
+  const {url } = useContext(DataContext)
   
   const handleOnChange = (event) => {
     event.target.type == "password"
@@ -16,7 +17,7 @@ function RegisterPage() {
   const handleFormSubmit = (event) => {
     event.preventDefault()
     if (username && password) {
-      registerFunc(username, password , setRedirect , setUsername, setPassword)
+      registerFunc(username, password , setRedirect , setUsername, setPassword , url)
     } else {
       alert("Please enter username and password")
     }

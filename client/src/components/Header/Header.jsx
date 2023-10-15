@@ -4,7 +4,7 @@ import "./Header.css"
 import { logoutFunc } from "../../functions/logoutFunc"
 import { DataContext } from "../Context/Context"
 export default function Header() {
-  const { isLogin, setIsLogin, currentUser } = useContext(DataContext)
+  const { isLogin, setIsLogin, currentUser , url} = useContext(DataContext)
   const [redirect, setRedirect] = useState(false);
   
   if(redirect) return <Navigate to="/"></Navigate>
@@ -41,7 +41,7 @@ export default function Header() {
         <span className="loginRegister">
           <Link
             onClick={() => {
-              logoutFunc(setIsLogin , setRedirect)
+              logoutFunc(setIsLogin , setRedirect  , url)
             }}>
             logOut
           </Link>

@@ -5,11 +5,11 @@ import { DataContext } from "../Context/Context"
 import { fetchMyPosts } from "../../functions/fetchMyPosts"
 
 function MyPosts() {
-  const { currentUser } = useContext(DataContext)
+  const { currentUser , url } = useContext(DataContext)
   const [myPosts, setMyPosts] = useState([])
   useEffect(() => {
     if (currentUser) {
-      fetchMyPosts(currentUser, setMyPosts)
+      fetchMyPosts(currentUser, setMyPosts , url)
     }
   }, [])
   return <>{myPosts && myPosts.map(({_id , title, content , username , createdAt })=>{
