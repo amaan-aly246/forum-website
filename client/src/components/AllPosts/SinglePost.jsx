@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { Navigate } from "react-router-dom"
 import "./AllPosts.css"
 import { voteFunc } from "../../functions/voteFunc"
-import ReactHTMLParser from "react-html-parser"
+import parse from 'html-react-parser';
 import TimeAgo from "timeago-react"
 import { DataContext } from "../Context/Context"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -54,7 +54,7 @@ function SinglePost({ username, time, postID, content, title }) {
       </aside>
       <main className="post-main" onClick={handleClick}>
         <h3 className="title">{title}</h3>
-        {ReactHTMLParser(content)}
+        {parse(content)}
       </main>
     </section>
   )

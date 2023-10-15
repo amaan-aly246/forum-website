@@ -3,7 +3,7 @@ import "./EachPost.css"
 import { voteFunc } from "../../functions/voteFunc"
 import Comment from "./Comment"
 import ReactQuill from "react-quill"
-import ReactHTMLParser from "react-html-parser"
+import parse from 'html-react-parser';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import TimeAgo from "timeago-react"
@@ -62,7 +62,7 @@ function EachPost() {
         </aside>
         <main className="Each-post-main">
           <h3 className="title">{title}</h3>
-          {ReactHTMLParser(content)}
+          {parse(content)}
         </main>
       </section>
       <section className="comment-area">
