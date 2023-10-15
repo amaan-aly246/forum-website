@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faComment } from "@fortawesome/free-solid-svg-icons"
 import parse from "html-react-parser"
 import TimeAgo from "timeago-react"
-import "./Comment.css"
+import "./comment.css"
 function Comment({ singleComment }) {
   return (
     <div className="comment">
