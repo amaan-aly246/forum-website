@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 8;
 require('dotenv').config();
 const secret = process.env.ACCESS_SECRET_TOKEN;
+
 const register = async (req, res) => {
     try {
         const userExits = await Users.findOne({ username: req.body.username });
